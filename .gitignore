@@ -35,8 +35,7 @@ tests/_support/_generated
 
 ## https://elisdn.ru/blog/60/seo-service-on-yii2-installing-of-application
 /yii
-/config/db.php
-/config/params.php
+/config/*-local.php
 /public_html/.htaccess
 /public_html/index.php
 /public_html/index-test.php

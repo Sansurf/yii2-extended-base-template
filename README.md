@@ -2,20 +2,17 @@
     <a href="https://github.com/yiisoft" target="_blank">
         <img src="https://avatars0.githubusercontent.com/u/993323" height="100px">
     </a>
-    <h1 align="center">Yii 2 Basic Project Template</h1>
+    <h1 align="center">Yii 2 Extended Basic Project Template</h1>
     <br>
 </p>
 
-Yii 2 Basic Project Template is a skeleton [Yii 2](http://www.yiiframework.com/) application best for
-rapidly creating small projects.
+Yii 2 Extended Basic Project Template is a skeleton [Yii 2](http://www.yiiframework.com/) application best for
+rapidly creating small projects, based on Standard Yii2 Basic Project Template.
+The Base of the project takes from an article of the [ElisDN blog](https://elisdn.ru/blog/60/seo-service-on-yii2-installing-of-application)
 
 The template contains the basic features including user login/logout and a contact page.
 It includes all commonly used configurations that would allow you to focus on adding new
 features to your application.
-
-[![Latest Stable Version](https://img.shields.io/packagist/v/yiisoft/yii2-app-basic.svg)](https://packagist.org/packages/yiisoft/yii2-app-basic)
-[![Total Downloads](https://img.shields.io/packagist/dt/yiisoft/yii2-app-basic.svg)](https://packagist.org/packages/yiisoft/yii2-app-basic)
-[![Build Status](https://travis-ci.org/yiisoft/yii2-app-basic.svg?branch=master)](https://travis-ci.org/yiisoft/yii2-app-basic)
 
 DIRECTORY STRUCTURE
 -------------------
@@ -24,6 +21,7 @@ DIRECTORY STRUCTURE
       commands/           contains console commands (controllers)
       config/             contains application configurations
       controllers/        contains Web controller classes
+      environments/       contains sets of files for environments deploy
       mail/               contains view files for e-mails
       models/             contains model classes
       runtime/            contains files generated during runtime
@@ -51,34 +49,39 @@ at [getcomposer.org](http://getcomposer.org/doc/00-intro.md#installation-nix).
 You can then install this project template using the following command:
 
 ~~~
-php composer.phar create-project --prefer-dist --stability=dev yiisoft/yii2-app-basic basic
+composer create-project --stability=dev sansurf/yii2-extended-basic project
 ~~~
 
-Now you should be able to access the application through the following URL, assuming `basic` is the directory
-directly under the Web root.
+or clone the repository for `pull` command availability:
 
 ~~~
-http://localhost/basic/web/
+git clone git@github.com:Sansurf/yii2-extended-base-template.git project
+cd project
+composer install
 ~~~
 
-### Install from an Archive File
-
-Extract the archive file downloaded from [yiiframework.com](http://www.yiiframework.com/download/) to
-a directory named `basic` that is directly under the Web root.
-
-Set cookie validation key in `config/web.php` file to some random secret string:
-
-```php
-'request' => [
-    // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
-    'cookieValidationKey' => '<secret random string goes here>',
-],
-```
-
-You can then access the application through the following URL:
+Init an environment:
 
 ~~~
-http://localhost/basic/web/
+php init
+~~~
+
+Fill your DB connection information in `config/common-local.php` and execute migrations:
+
+~~~
+php yii migrate
+~~~
+
+Sign up on site or create your first user manually:
+
+~~~
+php yii user/users/create
+~~~
+
+Assign `admin` role to your user:
+
+~~~
+php yii roles/assign
 ~~~
 
 
@@ -103,29 +106,6 @@ You can then access the application through the following URL:
 **NOTES:** 
 - Minimum required Docker engine version `17.04` for development (see [Performance tuning for volume mounts](https://docs.docker.com/docker-for-mac/osxfs-caching/))
 - The default configuration uses a host-volume in your home directory `.docker-composer` for composer caches
-
-
-CONFIGURATION
--------------
-
-### Database
-
-Edit the file `config/db.php` with real data, for example:
-
-```php
-return [
-    'class' => 'yii\db\Connection',
-    'dsn' => 'mysql:host=localhost;dbname=yii2basic',
-    'username' => 'root',
-    'password' => '1234',
-    'charset' => 'utf8',
-];
-```
-
-**NOTES:**
-- Yii won't create the database for you, this has to be done manually before you can access it.
-- Check and edit the other files in the `config/` directory to customize your application as required.
-- Refer to the README in the `tests` directory for information specific to basic application tests.
 
 
 TESTING

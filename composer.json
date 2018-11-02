@@ -1,7 +1,7 @@
 {
-    "name": "yiisoft/yii2-app-basic",
-    "description": "Yii 2 Basic Project Template",
-    "keywords": ["yii2", "framework", "basic", "project template"],
+    "name": "sansurf/yii2-extended-basic",
+    "description": "Yii 2 Extended Basic Project Template",
+    "keywords": ["yii2", "framework", "basic", "project template", "sansurf"],
     "homepage": "http://www.yiiframework.com/",
     "type": "project",
     "license": "BSD-3-Clause",
@@ -32,31 +32,6 @@
         "process-timeout": 1800,
         "fxp-asset": {
             "enabled": false
-        }
-    },
-    "scripts": {
-        "post-install-cmd": [
-            "yii\\composer\\Installer::postInstall"
-        ],
-        "post-create-project-cmd": [
-            "yii\\composer\\Installer::postCreateProject",
-            "yii\\composer\\Installer::postInstall"
-        ]
-    },
-    "extra": {
-        "yii\\composer\\Installer::postCreateProject": {
-            "setPermission": [
-                {
-                    "runtime": "0777",
-                    "web/assets": "0777",
-                    "yii": "0755"
-                }
-            ]
-        },
-        "yii\\composer\\Installer::postInstall": {
-            "generateCookieValidationKey": [
-                "config/web.php"
-            ]
         }
     },
     "repositories": [
